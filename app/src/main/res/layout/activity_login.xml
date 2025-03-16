@@ -142,4 +142,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         android:visibility="gone"/>
+
+    <include
+        android:id="@+id/progressbar"
+        layout="@layout/progress_loader" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

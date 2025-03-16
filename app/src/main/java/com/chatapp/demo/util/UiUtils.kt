@@ -4,6 +4,8 @@ import android.graphics.Color
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
+import com.airbnb.lottie.LottieAnimationView
+import com.chatapp.demo.R
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -24,4 +26,17 @@ fun showSnackbar(view: View, message: String) {
     snackbarView.layoutParams = params
     // Show the Snackbar
     snackbar.show()
+}
+
+fun showProgressBar(parentView :View){
+    parentView.visibility = View.VISIBLE
+    val lottieAnimationView :LottieAnimationView = parentView.findViewById(R.id.lottieAnimationView)
+    lottieAnimationView.playAnimation()
+}
+
+
+fun hideProgressBar(parentView :View){
+    parentView.visibility = View.GONE
+    val lottieAnimationView :LottieAnimationView = parentView.findViewById(R.id.lottieAnimationView)
+    lottieAnimationView.pauseAnimation()
 }

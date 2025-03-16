@@ -70,6 +70,7 @@ dependencies {
     implementation (libs.firebase.auth.ktx)
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.lifecycle.livedata.ktx)
+    implementation (libs.lottie)
     //noinspection UseTomlInstead
     implementation ("androidx.room:room-runtime:2.6.1")
     // Hilt Dependencies

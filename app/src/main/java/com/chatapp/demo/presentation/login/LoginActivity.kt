@@ -9,13 +9,13 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.chatapp.demo.R
 import com.chatapp.demo.databinding.ActivityLoginBinding
 import com.chatapp.demo.presentation.home.HomeActivity
 import com.chatapp.demo.presentation.signup.SignupActivity
+import com.chatapp.demo.util.showProgressBar
 import com.chatapp.demo.util.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -67,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Call the ViewModel to perform login
         if(loginViewModel.validateAllFields(email,password,resources)){
+            showProgressBar(binding.progressbar.parentLayout)
             loginViewModel.callLogin(email, password)
         }
     }
