@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.chatapp.demo.R
 import com.chatapp.demo.databinding.ActivitySignupBinding
 import com.chatapp.demo.presentation.login.LoginActivity
+import com.chatapp.demo.util.hideProgressBar
+import com.chatapp.demo.util.showProgressBar
 import com.chatapp.demo.util.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,6 +32,7 @@ class SignupActivity : AppCompatActivity() {
             val phone = binding.etPhoneNumber.text.toString()
             val password = binding.etSignupPassword.text.toString()
             if(mRegisterViewModel.validateAllFields(name, email, phone, password,resources)){
+                showProgressBar(binding.progressbar.parentLayout)
                 mRegisterViewModel.callToRegister(name, email, phone, password);
             }
         }
@@ -37,6 +40,7 @@ class SignupActivity : AppCompatActivity() {
 
     private fun listenForEvents(){
         mRegisterViewModel._RegisterResponsesLive.observe(this) { response ->
+            hideProgressBar(binding.progressbar.parentLayout)
             if (response.status) {
                 showSnackbar(binding.root,getString(R.string.success_signup))
                 val intent = Intent(this, LoginActivity::class.java)

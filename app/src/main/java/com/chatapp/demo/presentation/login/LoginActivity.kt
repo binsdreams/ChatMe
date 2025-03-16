@@ -15,6 +15,7 @@ import com.chatapp.demo.R
 import com.chatapp.demo.databinding.ActivityLoginBinding
 import com.chatapp.demo.presentation.home.HomeActivity
 import com.chatapp.demo.presentation.signup.SignupActivity
+import com.chatapp.demo.util.hideProgressBar
 import com.chatapp.demo.util.showProgressBar
 import com.chatapp.demo.util.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -87,6 +88,8 @@ class LoginActivity : AppCompatActivity() {
                 // Login failed: Show error message
                 showSnackbar(binding.root,response.message?:"")
             }
+            hideProgressBar(binding.progressbar.parentLayout)
+
         }
     }
 

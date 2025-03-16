@@ -154,4 +154,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSignupPassword" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/progressbar"
+        layout="@layout/progress_loader" />
 </androidx.constraintlayout.widget.ConstraintLayout>

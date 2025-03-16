@@ -11,8 +11,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/progress_width"
+        android:layout_height="@dimen/progress_height"
         app:lottie_rawRes="@raw/loader"
         app:lottie_loop="true"/>
 
