@@ -14,6 +14,7 @@
     <string name="hintName">Binil Thomas</string>
     <string name="hintPhone">+91 1234567890</string>
     <string name="hintPasswd">Password@123</string>
+    <string name="hintMsg">Type a message</string>
 
     <string name="error_name">Please enter a valid Name (allows letters, spaces, and hyphens)</string>
     <string name="error_phone">Please enter a valid  Phone Number (supports international formats)</string>

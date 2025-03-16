@@ -5,6 +5,7 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.dagger.hilt.android") // ✅ Ensure this is here
     id("kotlin-kapt") // ✅ Required for annotation processing
+    id("kotlin-parcelize")
 }
 
 android {

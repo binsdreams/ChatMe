@@ -27,7 +27,7 @@ class UserAdapter(private val users: List<User>, private val onUserClick: (User)
             val initials = user.name.take(2).uppercase()
             binding.tvIcon.text = initials
             binding.tvIcon.background.setTint(getColorForName(user.name))
-            binding.userMessage.text = user.message?.message?:binding.root.resources.getString(R.string.startconvorsation)
+            binding.userMessage.text = (user.message?.message?:binding.root.resources.getString(R.string.startconvorsation)).trim()
             binding.root.setOnClickListener { onUserClick(user) }
         }
     }

@@ -15,6 +15,7 @@ import com.chatapp.demo.R
 import com.chatapp.demo.databinding.ActivityHomeBinding
 import com.chatapp.demo.domain.User
 import com.chatapp.demo.presentation.chat.ChatActivity
+import com.chatapp.demo.presentation.chat.USER_KEY
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
 
         adapter = UserAdapter(users) { user ->
             val intent = Intent(this, ChatActivity::class.java)
-            intent.putExtra("userId", user.uid)
+            intent.putExtra(USER_KEY, user)
             startActivity(intent)
         }
 
@@ -56,6 +57,10 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.recyclerView.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
         mHomeViewModel.getUsers()
     }
 
