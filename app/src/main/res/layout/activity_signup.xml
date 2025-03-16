@@ -1,0 +1,157 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_bg">
+
+    <!-- Guideline for layout positioning -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_line1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.25"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_line2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.5"
+        android:orientation="horizontal"/>
+
+    <!-- Top color view -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/topColorView"
+        android:layout_width="@dimen/edittext_width"
+        android:layout_height="@dimen/edittext_width"
+        android:src="@drawable/shape_bottom_round"
+        app:layout_constraintBottom_toTopOf="@+id/guide_line2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- App logo -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/mainapplogo"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="@dimen/logo_height"
+        android:scaleType="fitXY"
+        android:src="@drawable/mainlog"
+        app:layout_constraintBottom_toTopOf="@+id/guide_line1"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout" />
+
+    <!-- Signup form container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_entry"
+        android:minWidth="@dimen/form_min_width"
+        android:paddingVertical="@dimen/margin_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guide_line1">
+
+        <!-- Full name label -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fullNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextLabel"
+            android:text="@string/fullName"
+            app:layout_constraintStart_toStartOf="@+id/etfullname"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Full name input -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etfullname"
+            style="@style/EditTextStyle"
+            android:layout_marginTop="@dimen/margin_5"
+            android:hint="@string/hintName"
+            android:nextFocusDown="@+id/etPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fullNameLabel" />
+
+        <!-- Email label -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/emailtextabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextLabel"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="@string/email_address"
+            app:layout_constraintStart_toStartOf="@+id/etEmailAdress"
+            app:layout_constraintTop_toBottomOf="@+id/etfullname" />
+
+        <!-- Email input -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etEmailAdress"
+            style="@style/EditTextStyle"
+            android:layout_marginTop="@dimen/margin_5"
+            android:inputType="textEmailAddress"
+            android:hint="@string/hintemail"
+            android:nextFocusDown="@+id/etPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailtextabel"/>
+
+        <!-- Phone label -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/phoneLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextLabel"
+            android:text="@string/phoneNumber"
+            android:layout_marginTop="@dimen/margin_10"
+            app:layout_constraintStart_toStartOf="@+id/etPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@+id/etEmailAdress" />
+
+        <!-- Phone input -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPhoneNumber"
+            style="@style/EditTextStyle"
+            android:layout_marginTop="@dimen/margin_5"
+            android:inputType="phone"
+            android:hint="@string/hintPhone"
+            android:nextFocusDown="@+id/etPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phoneLabel"/>
+
+        <!-- Password label -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/passwordLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextLabel"
+            android:text="@string/password"
+            android:layout_marginTop="@dimen/margin_10"
+            app:layout_constraintStart_toStartOf="@+id/etSignupPassword"
+            app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
+
+        <!-- Password input -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSignupPassword"
+            style="@style/EditTextStyle"
+            android:layout_marginTop="@dimen/margin_5"
+            android:inputType="textPassword"
+            android:hint="@string/hintPasswd"
+            android:imeOptions="actionDone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordLabel"/>
+
+        <!-- Signup button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignUp"
+            style="@style/ButtonStyle"
+            android:text="@string/Sign_up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etSignupPassword" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

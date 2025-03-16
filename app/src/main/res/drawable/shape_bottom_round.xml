@@ -1,0 +1,10 @@
+<!-- res/drawable/bottom_rounded_black_shape.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+  <!-- Set the background color to black -->
+  <solid android:color="#000000" />
+
+  <!-- Round only the bottom corners -->
+  <corners
+      android:bottomLeftRadius="20dp"
+  android:bottomRightRadius="20dp" />
+</shape>

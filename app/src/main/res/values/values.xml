@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xlarge">28sp</dimen>
+
+    <!-- Button dimensions -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_width">0dp</dimen> <!-- Match parent -->
+
+    <!-- EditText dimensions -->
+    <dimen name="edittext_height">48dp</dimen>
+    <dimen name="edittext_width">0dp</dimen> <!-- Match parent -->
+
+    <!-- Logo dimensions -->
+    <dimen name="logo_width">200dp</dimen>
+    <dimen name="logo_height">160dp</dimen>
+
+    <!-- Form container dimensions -->
+    <dimen name="form_min_width">330dp</dimen>
+    <dimen name="form_padding_vertical">20dp</dimen>
+
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+</resources>

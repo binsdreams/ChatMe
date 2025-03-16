@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <style name="EditTextStyle">
+                <item name="android:layout_width">@dimen/edittext_width</item>
+                <item name="android:layout_height">@dimen/edittext_height</item>
+                <item name="android:layout_marginHorizontal">@dimen/margin_large</item>
+                <item name="android:layout_marginTop">@dimen/margin_medium</item>
+                <item name="android:background">@drawable/et_border_bg</item>
+                <item name="android:imeOptions">actionNext</item>
+                <item name="android:paddingStart">@dimen/padding_medium</item>
+                <item name="android:singleLine">true</item>
+                <item name="android:textColor">@color/edittext_text</item>
+                <item name="android:textColorHint">@color/edittext_hint</item>
+                <item name="android:textSize">@dimen/text_size_medium</item>
+        </style>
+
+        <style name="ButtonStyle">
+                <item name="android:layout_width">@dimen/button_width</item>
+                <item name="android:layout_height">@dimen/button_height</item>
+                <item name="android:layout_marginHorizontal">@dimen/margin_large</item>
+                <item name="android:layout_marginVertical">@dimen/margin_large</item>
+                <item name="android:background">@drawable/login_btn</item>
+                <item name="android:padding">@dimen/padding_small</item>
+                <item name="android:scaleType">fitXY</item>
+                <item name="android:textAllCaps">false</item>
+                <item name="android:textColor">@color/button_text</item>
+                <item name="android:textFontWeight">500</item>
+                <item name="android:textSize">@dimen/text_size_medium</item>
+        </style>
+</resources>

@@ -1,0 +1,145 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_bg">
+
+    <!-- Guideline for layout positioning -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_line1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.3"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_line2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.5"
+        android:orientation="horizontal"/>
+
+    <!-- Top color view -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/topColorView"
+        android:layout_width="@dimen/edittext_width"
+        android:layout_height="@dimen/edittext_width"
+        android:src="@drawable/shape_bottom_round"
+        app:layout_constraintBottom_toTopOf="@+id/guide_line2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- App logo -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/mainapplogo"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="@dimen/logo_height"
+        android:scaleType="fitXY"
+        android:src="@drawable/mainlog"
+        app:layout_constraintBottom_toTopOf="@+id/guide_line1"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout" />
+
+    <!-- Login form container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_entry"
+        android:minWidth="@dimen/form_min_width"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guide_line1"
+        android:visibility="gone">
+
+        <!-- Login title -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLoginTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/welcome"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_size_xlarge"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Email label -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/emailtextabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_5"
+            android:text="@string/email_address"
+            style="@style/TextLabel"
+            app:layout_constraintBottom_toTopOf="@+id/etUsername"
+            app:layout_constraintStart_toStartOf="@+id/etUsername" />
+
+        <!-- Email input -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etUsername"
+            style="@style/EditTextStyle"
+            android:layout_marginTop="@dimen/margin_40"
+            android:inputType="textEmailAddress"
+            android:hint="@string/hintemail"
+            android:nextFocusDown="@+id/etPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLoginTitle" />
+
+        <!-- Password label -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/passwordtextlabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_5"
+            android:text="@string/password"
+            style="@style/TextLabel"
+            app:layout_constraintBottom_toTopOf="@+id/etPassword"
+            app:layout_constraintStart_toStartOf="@+id/etPassword" />
+
+        <!-- Password input -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPassword"
+            style="@style/EditTextStyle"
+            android:layout_marginTop="@dimen/margin_40"
+            android:hint="@string/hintPasswd"
+            android:inputType="textPassword"
+            android:nextFocusDown="@id/btnLogin"
+            android:imeOptions="actionDone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etUsername" />
+
+        <!-- Login button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            style="@style/ButtonStyle"
+            android:text="@string/Login"
+            android:imeOptions="actionDone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- No account text -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/noAccountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/dontHaveanAccount"
+        android:textColor="@color/white"
+        android:textFontWeight="500"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        android:visibility="gone"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
