@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import com.airbnb.lottie.LottieAnimationView
 import com.chatapp.demo.R
 import com.google.android.material.snackbar.Snackbar
+import androidx.core.graphics.toColorInt
 
 /**
  * Displays a Snackbar with a custom red background and white text.
@@ -39,4 +40,14 @@ fun hideProgressBar(parentView :View){
     parentView.visibility = View.GONE
     val lottieAnimationView :LottieAnimationView = parentView.findViewById(R.id.lottieAnimationView)
     lottieAnimationView.pauseAnimation()
+}
+
+fun getColorForName(name: String): Int {
+    val colors = listOf(
+        "#6200EE".toColorInt(),
+        "#03DAC6".toColorInt(),
+        "#FF0266".toColorInt(),
+        "#FFD600".toColorInt()
+    )
+    return colors[name.hashCode() % colors.size]
 }

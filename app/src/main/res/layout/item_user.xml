@@ -1,19 +1,37 @@
 <!-- res/layout/item_user.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="?attr/selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true">
+    android:background="@color/app_bg"
+    android:paddingVertical="@dimen/margin_medium"
+    android:paddingHorizontal="@dimen/margin_large">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvIcon"
+        android:layout_width="@dimen/button_height"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/rounded_bg"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="bold"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvUserName"
-        android:layout_width="match_parent"
+        style="@style/TextTitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="User Name"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:layout_marginStart="@dimen/text_size_large"
+        app:layout_constraintBottom_toBottomOf="@+id/tvIcon"
+        app:layout_constraintStart_toEndOf="@+id/tvIcon"
+        app:layout_constraintTop_toTopOf="@+id/tvIcon" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

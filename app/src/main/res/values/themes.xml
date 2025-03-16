@@ -12,6 +12,12 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="TextTitle">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- Common styles for edit texts -->
     <style name="EditTextStyle">
         <item name="android:layout_width">@dimen/edittext_width</item>

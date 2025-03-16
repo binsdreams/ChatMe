@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chatapp.demo.databinding.ItemUserBinding
 import com.chatapp.demo.domain.User
+import com.chatapp.demo.util.getColorForName
 
 class UserAdapter(private val users: List<User>, private val onUserClick: (User) -> Unit) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
@@ -22,6 +23,9 @@ class UserAdapter(private val users: List<User>, private val onUserClick: (User)
     inner class UserViewHolder(private val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
             binding.tvUserName.text = user.name
+            val initials = user.name.take(2).uppercase()
+            binding.tvIcon.text = initials
+            binding.tvIcon.background.setTint(getColorForName(user.name))
             binding.root.setOnClickListener { onUserClick(user) }
         }
     }
