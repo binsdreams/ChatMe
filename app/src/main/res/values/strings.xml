@@ -22,4 +22,5 @@
 
     <string name="success_signup">Success! Your account has been created!</string>
     <string name="menu_user_profile">User Profile</string>
+    <string name="startconvorsation">Start Conversation!</string>
 </resources>

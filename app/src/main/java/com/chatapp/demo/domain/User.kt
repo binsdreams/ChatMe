@@ -6,7 +6,8 @@ data class User(
     val name: String = "",
     val email: String = "",
     val phone: String = "",
-    val online: Boolean = false
+    val online: Boolean = false,
+    var message: Message?=null
 )
 
 // Data Model for Messages

@@ -3,6 +3,7 @@ package com.chatapp.demo.presentation.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.chatapp.demo.R
 import com.chatapp.demo.databinding.ItemUserBinding
 import com.chatapp.demo.domain.User
 import com.chatapp.demo.util.getColorForName
@@ -26,6 +27,7 @@ class UserAdapter(private val users: List<User>, private val onUserClick: (User)
             val initials = user.name.take(2).uppercase()
             binding.tvIcon.text = initials
             binding.tvIcon.background.setTint(getColorForName(user.name))
+            binding.userMessage.text = user.message?.message?:binding.root.resources.getString(R.string.startconvorsation)
             binding.root.setOnClickListener { onUserClick(user) }
         }
     }
