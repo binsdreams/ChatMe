@@ -1,8 +1,11 @@
 package com.chatapp.demo.domain.repo
 
-import com.chatapp.demo.domain.User
+import androidx.lifecycle.LiveData
+import com.chatapp.demo.data.db.UserEntity
 
 interface UserRepository {
 
-    fun getUsers(onResult: (List<User>) -> Unit)
+    fun getAllUsers(): LiveData<List<UserEntity>>
+
+    fun getUsers()
 }

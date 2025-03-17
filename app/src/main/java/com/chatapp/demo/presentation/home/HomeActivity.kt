@@ -12,8 +12,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chatapp.demo.R
+import com.chatapp.demo.data.db.UserEntity
 import com.chatapp.demo.databinding.ActivityHomeBinding
-import com.chatapp.demo.domain.User
 import com.chatapp.demo.presentation.chat.ChatActivity
 import com.chatapp.demo.presentation.chat.USER_KEY
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
     private val mHomeViewModel by viewModels<HomeViewModel>()
 
     private lateinit var binding: ActivityHomeBinding
-    private val users = mutableListOf<User>()
+    private val users = mutableListOf<UserEntity>()
     private lateinit var adapter: UserAdapter
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -66,7 +66,7 @@ class HomeActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun listenForEvents(){
-        mHomeViewModel._UserResponsesLive.observe(this) { response ->
+        mHomeViewModel.getAllUsers().observe(this) { response ->
             users.clear()
             users.addAll(response)
             adapter.notifyDataSetChanged()

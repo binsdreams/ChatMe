@@ -16,6 +16,8 @@ appcompat = "1.7.0"
 firebaseFirestoreKtx = "25.1.2"
 material = "1.12.0"
 lottie = "6.1.0"
+room_version = "2.6.0"
+rcoroutine_version = "1.5.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,6 +45,10 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+room-android = { module = "androidx.room:room-ktx", version.ref = "room_version" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room_version" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room_version" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "rcoroutine_version" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

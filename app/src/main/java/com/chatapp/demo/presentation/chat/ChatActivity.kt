@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.chatapp.demo.R
+import com.chatapp.demo.data.db.UserEntity
 import com.chatapp.demo.databinding.ActivityChatBinding
 import com.chatapp.demo.domain.Message
 import com.chatapp.demo.domain.User
@@ -37,7 +38,7 @@ class ChatActivity : AppCompatActivity() {
         // Set the Toolbar as the Action Bar
         this.setSupportActionBar(toolbar)
 
-        val user = intent.getParcelableExtra<User>(USER_KEY) ?: return
+        val user = intent.getParcelableExtra<UserEntity>(USER_KEY) ?: return
 
         // Customize the Action Bar (optional)
         supportActionBar?.title =user.name

@@ -1,15 +1,25 @@
 package com.chatapp.demo.data
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import com.chatapp.demo.data.db.ChatsDao
+import com.chatapp.demo.data.db.MessageEntity
 import com.chatapp.demo.domain.Message
 import com.chatapp.demo.domain.repo.ChatRepository
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.Filter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 // Repository for Firebase Operations
-class ChatRepositoryImpl @Inject constructor(private val firestore: FirebaseFirestore) :
-    ChatRepository {
+class ChatRepositoryImpl @Inject constructor(private val firestore: FirebaseFirestore,
+                                             private val chatsDao: ChatsDao) : ChatRepository {
+
+    private val auth = FirebaseAuth.getInstance()
 
     override fun sendMessage(message: Message, onComplete: (Boolean) -> Unit) {
         firestore.collection("chats").add(message)
@@ -43,5 +53,28 @@ class ChatRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
                 }
             }
 
+    }
+
+    override fun getAllMessages(onResult: (List<MessageEntity>) -> Unit){
+        firestore.collection("chats")
+            .get()
+            .addOnSuccessListener { documents ->
+                val messageList = documents.mapNotNull { it.toObject(MessageEntity::class.java) }
+                CoroutineScope(Dispatchers.IO).launch {
+                    chatsDao.insertChats(messageList) // Save to Room DB
+                    onResult(messageList)
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("CHATME","Firestore Fetch Failed: ${e.message}")
+            }
+    }
+
+    override  suspend fun getLastChats(): List<MessageEntity> {
+        auth.currentUser?.uid?.let {
+            return chatsDao.getLastMessagesForEachUser(it)
+        }
+
+        return chatsDao.getLastMessagesForEachUser("")
     }
 }

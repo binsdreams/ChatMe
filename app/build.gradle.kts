@@ -79,4 +79,9 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.google.services)
 
+    implementation(libs.room.android)
+    kapt(libs.room.compiler)
+    implementation(libs.room.runtime)
+    implementation(libs.coroutines)
+
 }

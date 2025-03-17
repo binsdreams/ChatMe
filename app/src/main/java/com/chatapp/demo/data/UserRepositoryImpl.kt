@@ -1,25 +1,40 @@
 package com.chatapp.demo.data
 
+import androidx.lifecycle.LiveData
+import com.chatapp.demo.data.db.UserDao
+import com.chatapp.demo.data.db.UserEntity
 import com.chatapp.demo.domain.Message
 import com.chatapp.demo.domain.User
 import com.chatapp.demo.domain.repo.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 // Repository for Firebase Operations
-class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFirestore) : UserRepository {
+class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFirestore,
+                                             private val userDao: UserDao) : UserRepository {
+
+
+    override fun getAllUsers(): LiveData<List<UserEntity>> {
+        return userDao.getAllUsers()
+    }
 
     private val auth = FirebaseAuth.getInstance()
 
-    override fun getUsers(onResult: (List<User>) -> Unit) {
+    override fun getUsers() {
         firestore.collection("users").get().addOnSuccessListener { result ->
-            val users = result.documents.mapNotNull { it.toObject(User::class.java) }
+            val users = result.documents.mapNotNull { it.toObject(UserEntity::class.java) }
 //            onResult(users.filter { it.uid != auth.currentUser?.uid }) // Exclude the current user
-            getLatestMessages(users.filter { it.uid != auth.currentUser?.uid }) {
-                onResult(it)
+            CoroutineScope(Dispatchers.IO).launch {
+                userDao.insertUsers(users.filter { it.uid != auth.currentUser?.uid })
             }
+//            getLatestMessages(users.filter { it.uid != auth.currentUser?.uid }) {
+//                onResult(it)
+//            }
         }
     }
 
