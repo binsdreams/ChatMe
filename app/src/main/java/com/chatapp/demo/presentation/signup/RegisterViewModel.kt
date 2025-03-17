@@ -15,7 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val repository: AuthRepository) : ViewModel() {
+open class RegisterViewModel @Inject constructor(private val repository: AuthRepository) : ViewModel() {
     private val _RegisterResponses: MutableLiveData<AuthResponse> = MutableLiveData()
     val _RegisterResponsesLive: LiveData<AuthResponse> = _RegisterResponses
 
