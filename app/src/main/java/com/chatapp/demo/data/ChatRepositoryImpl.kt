@@ -1,7 +1,6 @@
 package com.chatapp.demo.data
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import com.chatapp.demo.data.db.ChatsDao
 import com.chatapp.demo.data.db.MessageEntity
 import com.chatapp.demo.domain.Message
@@ -55,26 +54,26 @@ class ChatRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
 
     }
 
-    override fun getAllMessages(onResult: (List<MessageEntity>) -> Unit){
+    override fun getAllMessages(messageStatus: (Boolean) -> Unit){
         firestore.collection("chats")
             .get()
             .addOnSuccessListener { documents ->
                 val messageList = documents.mapNotNull { it.toObject(MessageEntity::class.java) }
                 CoroutineScope(Dispatchers.IO).launch {
                     chatsDao.insertChats(messageList) // Save to Room DB
-                    onResult(messageList)
+                    messageStatus(true)
                 }
             }
             .addOnFailureListener { e ->
                 Log.e("CHATME","Firestore Fetch Failed: ${e.message}")
+                messageStatus(false)
             }
     }
 
-    override  suspend fun getLastChats(): List<MessageEntity> {
+    override suspend fun getLastMessageBetweenUsers(user2: String): MessageEntity {
         auth.currentUser?.uid?.let {
-            return chatsDao.getLastMessagesForEachUser(it)
+            return chatsDao.getLastMessageBetweenUsers(it,user2)
         }
-
-        return chatsDao.getLastMessagesForEachUser("")
+        return MessageEntity()
     }
 }

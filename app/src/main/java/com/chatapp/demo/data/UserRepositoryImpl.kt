@@ -18,12 +18,11 @@ import javax.inject.Inject
 class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFirestore,
                                              private val userDao: UserDao) : UserRepository {
 
+    private val auth = FirebaseAuth.getInstance()
 
     override fun getAllUsers(): LiveData<List<UserEntity>> {
-        return userDao.getAllUsers()
+        return userDao.getAllUsers(auth.currentUser?.uid?:"")
     }
-
-    private val auth = FirebaseAuth.getInstance()
 
     override fun getUsers() {
         firestore.collection("users").get().addOnSuccessListener { result ->

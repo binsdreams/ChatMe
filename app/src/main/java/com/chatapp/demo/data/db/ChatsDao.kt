@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.chatapp.demo.domain.Message
 
 @Dao
 interface ChatsDao {
@@ -21,13 +22,11 @@ interface ChatsDao {
 
     @Query("""
         SELECT * FROM chats 
-        WHERE senderId = :currentUserId OR receiverId = :currentUserId 
-        GROUP BY CASE 
-            WHEN senderId = :currentUserId THEN receiverId 
-            ELSE senderId 
-        END
-        ORDER BY timestamp DESC
+        WHERE (senderId = :user1 AND receiverId = :user2) 
+           OR (senderId = :user2 AND receiverId = :user1) 
+        ORDER BY timestamp DESC 
+        LIMIT 1
     """)
-    suspend fun getLastMessagesForEachUser(currentUserId: String): List<MessageEntity>
+   suspend fun getLastMessageBetweenUsers(user1: String, user2: String): MessageEntity
 
 }

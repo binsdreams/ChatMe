@@ -15,6 +15,6 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUsers(users: List<UserEntity>) // Insert list properly
 
-    @Query("SELECT * FROM users")
-    fun getAllUsers(): LiveData<List<UserEntity>>
+    @Query("SELECT * FROM users WHERE uid != :myUid")
+    fun getAllUsers(myUid :String): LiveData<List<UserEntity>>
 }

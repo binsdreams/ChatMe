@@ -57,18 +57,33 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.recyclerView.adapter = adapter
+        mHomeViewModel.getUsers()
     }
 
     override fun onResume() {
         super.onResume()
-        mHomeViewModel.getUsers()
+        mHomeViewModel.getAllMessages()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun listenForEvents(){
         mHomeViewModel.getAllUsers().observe(this) { response ->
+            val newUsers = mutableListOf<UserEntity>()
+            newUsers.addAll(response)
+            mHomeViewModel.getMessageForEachUsers(newUsers)
+        }
+
+        mHomeViewModel._chatListResponseLive.observe(this){
+            if(it){
+                val newUsers = mutableListOf<UserEntity>()
+                newUsers.addAll(users)
+                mHomeViewModel.getMessageForEachUsers(newUsers)
+            }
+        }
+
+        mHomeViewModel._userListResponseLive.observe(this){ userList ->
             users.clear()
-            users.addAll(response)
+            users.addAll(userList)
             adapter.notifyDataSetChanged()
         }
     }
