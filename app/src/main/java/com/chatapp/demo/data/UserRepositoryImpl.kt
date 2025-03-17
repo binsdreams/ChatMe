@@ -1,6 +1,7 @@
 package com.chatapp.demo.data
 
 import androidx.lifecycle.LiveData
+import com.chatapp.demo.data.cache.CacheManager
 import com.chatapp.demo.data.db.UserDao
 import com.chatapp.demo.data.db.UserEntity
 import com.chatapp.demo.domain.Message
@@ -16,7 +17,7 @@ import javax.inject.Inject
 
 // Repository for Firebase Operations
 class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFirestore,
-                                             private val userDao: UserDao) : UserRepository {
+                                             private val userDao: UserDao,private val cacheManager: CacheManager) : UserRepository {
 
     private val auth = FirebaseAuth.getInstance()
 
@@ -78,5 +79,9 @@ class UserRepositoryImpl @Inject constructor(private val firestore: FirebaseFire
                 println("Error fetching messages: ${e.message}")
                 callback(senders) // Return users without messages on failure
             }
+    }
+
+    override fun clearAndLogout() {
+        cacheManager.clear()
     }
 }

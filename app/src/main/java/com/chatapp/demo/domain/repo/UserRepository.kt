@@ -8,4 +8,6 @@ interface UserRepository {
     fun getAllUsers(): LiveData<List<UserEntity>>
 
     fun getUsers()
+
+    fun clearAndLogout()
 }

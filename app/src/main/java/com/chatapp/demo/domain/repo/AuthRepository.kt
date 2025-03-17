@@ -10,4 +10,7 @@ interface AuthRepository {
         password: String,
         onComplete: (Boolean, String?) -> Unit
     )
+    fun isUserLoggedIn() :Boolean
+
+    fun clearAndLogout()
 }

@@ -48,4 +48,8 @@ class HomeViewModel @Inject constructor(private val repository: UserRepository,
         }
     }
 
+    fun clearAndLogout(){
+        repository.clearAndLogout()
+    }
+
 }

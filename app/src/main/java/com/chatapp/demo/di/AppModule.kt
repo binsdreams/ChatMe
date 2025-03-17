@@ -1,10 +1,12 @@
 package com.chatapp.demo.di
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.chatapp.demo.data.AuthRepositoryImpl
 import com.chatapp.demo.data.ChatRepositoryImpl
 import com.chatapp.demo.data.UserRepositoryImpl
+import com.chatapp.demo.data.cache.CacheManager
 import com.chatapp.demo.data.db.AppDatabase
 import com.chatapp.demo.data.db.ChatsDao
 import com.chatapp.demo.data.db.UserDao
@@ -39,14 +41,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAuthRepository(firestore: FirebaseFirestore): AuthRepository {
-        return AuthRepositoryImpl(firestore)
+    fun provideAuthRepository(firestore: FirebaseFirestore,cacheManager: CacheManager): AuthRepository {
+        return AuthRepositoryImpl(firestore,cacheManager)
     }
 
     @Provides
     @Singleton
-    fun provideUserRepository(firestore: FirebaseFirestore,userDao: UserDao): UserRepository {
-        return UserRepositoryImpl(firestore,userDao)
+    fun provideUserRepository(firestore: FirebaseFirestore,userDao: UserDao,cacheManager: CacheManager): UserRepository {
+        return UserRepositoryImpl(firestore,userDao,cacheManager)
     }
 
     @Provides
@@ -68,4 +70,8 @@ object AppModule {
     fun provideChatsDao(database: AppDatabase): ChatsDao {
         return database.chatsDao()
     }
+
+    @Singleton
+    @Provides
+    fun provideCache(application: Application): CacheManager = CacheManager(application)
 }

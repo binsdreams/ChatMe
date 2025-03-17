@@ -16,6 +16,7 @@ import com.chatapp.demo.data.db.UserEntity
 import com.chatapp.demo.databinding.ActivityHomeBinding
 import com.chatapp.demo.presentation.chat.ChatActivity
 import com.chatapp.demo.presentation.chat.USER_KEY
+import com.chatapp.demo.presentation.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -96,6 +97,14 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_profile -> {
+                true
+            }
+
+            R.id.action_logout-> {
+                mHomeViewModel.clearAndLogout()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -36,6 +36,10 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(loginViewModel.isUserLoggedIn()){
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
         // Set up UI listeners (e.g., button clicks)
         setupListeners()
 

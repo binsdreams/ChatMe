@@ -41,4 +41,12 @@ class LoginViewModel @Inject constructor(private val repository: AuthRepository)
         }
         return true
     }
+
+    fun isUserLoggedIn() :Boolean{
+        return repository.isUserLoggedIn()
+    }
+
+    fun clearAndLogout() {
+        repository.clearAndLogout()
+    }
 }

@@ -83,5 +83,7 @@ dependencies {
     kapt(libs.room.compiler)
     implementation(libs.room.runtime)
     implementation(libs.coroutines)
+    implementation(libs.security)
+
 
 }

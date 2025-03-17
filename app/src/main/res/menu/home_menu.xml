@@ -5,4 +5,10 @@
         android:icon="@drawable/user_profile_icon"
         android:title="@string/menu_user_profile"
         app:showAsAction="ifRoom"/> <!-- Show as an icon if space is available -->
+
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/logout_svgrepo_com"
+        android:title="@string/menu_user_logout"
+        app:showAsAction="ifRoom"/>
 </menu>
