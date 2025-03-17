@@ -73,7 +73,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.lottie)
     //noinspection UseTomlInstead
-    implementation("androidx.room:room-runtime:2.6.1")
     // Hilt Dependencies
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
